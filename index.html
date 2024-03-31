@@ -101,16 +101,35 @@
 
         /* Estilos adicionais para dispositivos móveis */
         @media (max-width: 768px) {
+            #menu-toggle {
+                font-size: 2.5rem; /* Reduz o tamanho do ícone do hambúrguer */
+                padding: 20px; /* Ajusta o padding do botão */
+            }
+
             #menu {
                 width: 90%; /* Ajusta a largura do menu para dispositivos móveis */
             }
 
-            #menu-toggle {
-                display: block; /* Mostra o botão de menu para dispositivos móveis */
+            .container {
+                flex-direction: column; /* Altera a direção do flex para coluna */
             }
 
-            .nome {
-                margin-right: 10px; /* Adiciona margem à direita */
+            #banner {
+                order: -1; /* Move o banner para o topo */
+                margin-bottom: 20px; /* Adiciona espaço entre o banner e o texto */
+                width: 100%; /* Define a largura da imagem como 100% */
+            }
+
+            #banner img {
+                width: 130%; /* Aumenta o tamanho da imagem em 30% */
+                max-width: none; /* Remove a largura máxima */
+                height: auto;
+                margin-left: 0px;
+            }
+
+            #texto {
+                text-align: center; /* Centraliza o texto horizontalmente */
+                margin-left: 0; /* Remove a margem esquerda */
             }
         }
 
@@ -123,40 +142,16 @@
             height: 100vh; /* Define a altura como 100% da viewport */
         }
 
-        #texto {
-            text-align: center; /* Centraliza o texto horizontalmente */
-            color: black;
-            font-size: 18px; /* Tamanho do texto */
-            width: 50%; /* Largura do texto */
-            border-left: 0px solid #ccc; /* Adiciona borda à esquerda */
-            padding-left: 0px; /* Adiciona espaço à esquerda do texto */
-            display: flex;
-            align-items: center; /* Centraliza verticalmente */
-            flex-direction: column; /* Altera a direção do flex para coluna */
-            margin-left:30px;
-        }
-
         .nome {
             font-size: 2em;
             margin-bottom: 5px; /* Adiciona margem inferior */
-            
+            margin-left: 20px;
         }
-        @media (max-width: 768px) {
-          /* Altere o tamanho da fonte para dispositivos com largura máxima de 768px */
-          .nome {
-              font-size: 1.5em;
-          }
-      }
 
-      @media (max-width: 480px) {
-          /* Altere o tamanho da fonte para dispositivos com largura máxima de 480px */
-          .nome {
-              font-size: 1em;
-          }
-      }
         .oab {
             font-size: 14px; /* Tamanho do número da OAB */
             margin-top: 5px; /* Adiciona margem superior */
+            margin-left: 20px;
         }
 
         #banner {
@@ -164,18 +159,11 @@
             width: 50%; /* Largura da imagem */
             border-right: 3px solid #ccc; /* Adiciona borda à direita */
             padding-right: 10px; /* Adiciona espaço à direita da imagem */
-            margin-left: 30px;
-            padding-right: 90px;
+            margin-left: 0px;
+            padding-right: 120px;
             
             display: flex;
             align-items: center; /* Centraliza verticalmente */
-        }
-
-        #banner img {
-            width: 100%;
-            max-width: 100%; /* Largura máxima do banner */
-            height: auto;
-            margin-left: 30px;
         }
 
         /* Estilos para o ícone de seta */
