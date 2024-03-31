@@ -137,11 +137,23 @@
         }
 
         .nome {
-            font-size: x-large;
+            font-size: 2em;
             margin-bottom: 5px; /* Adiciona margem inferior */
             
         }
+        @media (max-width: 768px) {
+          /* Altere o tamanho da fonte para dispositivos com largura máxima de 768px */
+          .nome {
+              font-size: 1.5em;
+          }
+      }
 
+      @media (max-width: 480px) {
+          /* Altere o tamanho da fonte para dispositivos com largura máxima de 480px */
+          .nome {
+              font-size: 1em;
+          }
+      }
         .oab {
             font-size: 14px; /* Tamanho do número da OAB */
             margin-top: 5px; /* Adiciona margem superior */
