@@ -131,12 +131,13 @@
                 text-align: center; /* Centraliza o texto horizontalmente */
                 margin-left: 0; /* Remove a margem esquerda */
                 margin-bottom: 20px; /* Adiciona espaçamento entre a imagem e o texto */
+                margin-top: 20px; /* Adiciona margem superior entre o texto e a imagem */
             }
         }
 
         @media (max-width: 640px) { /* Ajustado para dispositivos móveis como celulares */
             #banner img {
-                width: 180%; /* Aumenta o tamanho da imagem para dispositivos móveis */
+                width: 180%; /* Ajuste para telas de celulares */
             }
         }
 
@@ -234,12 +235,12 @@
         </button>
 
         <!-- Banner -->
-        <div id="banner">
+        <div id="banner" style="margin-bottom: 20px;"> <!-- Adiciona margem inferior -->
             <img src="Símbolo da Justiça (1).png" alt="Banner">
         </div>
 
         <!-- Texto -->
-        <div id="texto">
+        <div id="texto" style="margin-top: 20px;"> <!-- Adiciona margem superior -->
             <p class="nome">Marcone Silva de Brito</p>
             <p class="oab">OAB/MG nº 100100</p> <!-- Adiciona a classe "oab" para o número da OAB -->
         </div>
