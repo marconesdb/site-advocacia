@@ -22,7 +22,7 @@
 
 #menu-toggle {
   font-size: 5.5rem; /* Aumenta o tamanho do ícone do hambúrguer */
-  padding: 45px; /* Aumenta o tamanho do botão */
+  padding: 65px; /* Aumenta o tamanho do botão */
   line-height: 0; /* Remove espaço extra ao redor do ícone */
   position: absolute;
   top: 10%;
@@ -126,7 +126,7 @@ body {
 }
 #banner {
   text-align: center;
-  margin-top: 20px; /* Espaçamento entre o parágrafo e o banner */
+  margin-top: 10px; /* Espaçamento entre o parágrafo e o banner */
   width: 50%; /* Largura da imagem */
   border-right: 3px solid #ccc; /* Adiciona borda à direita */
   padding-right: 20px; /* Adiciona espaço à direita da imagem */
@@ -134,8 +134,8 @@ body {
 
 #banner img {
   width: 100%;
-  max-width: 550px; /* Largura máxima do banner */
-  height: 350px;
+  max-width: 350px; /* Largura máxima do banner */
+  height: 190px;
 }
 
 /* Estilos para o ícone de seta */
