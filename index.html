@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Container com Menu Hambúrguer</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Adicione o link para o CDN do FontAwesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body class="bg-gray-200">
+  <div class="container mx-auto relative">
+    <!-- Menu Hambúrguer -->
+    <button id="menu-toggle" class="flex items-center border rounded text-gray-600 border-gray-600 hover:text-white hover:border-white">
+      <span></span> <!-- Adiciona um span para reconhecer o clique em toda a área do botão -->
+    </button>
+    
+    <!-- Banner -->
+    <div id="banner">
+      <img src="justice.png" alt="Banner">
+    </div>
+    
+    <!-- Texto -->
+    <div id="texto">
+      <p class="nome">Marcone Silva de Brito</p>
+      <p>OAB/MG nº 100100</p>
+    </div>
+    
+    <!-- Menu Dropdown -->
+    <div id="menu" class="text-right">
+      <a href="#">Home</a>
+      <a href="#">Sobre</a>
+      <a href="#">Contato</a>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay"></div>
+
+    <!-- Ícone de seta -->
+    <div class="arrow-icon">
+      <img src="seta-para-baixo.png" alt="Seta" class="w-10">
+    </div>
+  </div>
+ <!-- Section para receber um texto -->
+ <section>
+  <h2>"Defendemos seus direitos com ética e excelência."</h2>
+  <!-- Ícone do WhatsApp -->
+  <a href="https://api.whatsapp.com/send?phone=000000000000" target="_blank" rel="noopener noreferrer" class=" fale text-xl  block  py-2 rounded-md shadow-md hover:bg-yellow-200 transition duration-300 animate__animated animate__zoomInLeft text-center ">
+    Fale comigo agora
+    <i class="fab fa-whatsapp ml-2"></i>
+</a>
+</section>
+  <script src="menu.js"></script>
+</body>
+</html>
