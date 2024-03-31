@@ -1,57 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Container com Menu Hambúrguer</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Adicione o link para o CDN do FontAwesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container com Menu Hambúrguer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Adicione o link para o CDN do FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+        /* Definindo variável para a fonte */
+        :root {
+            --font-family: Arial, sans-serif;
+        }
+
+        /* Estilos adicionais para o menu */
+        #menu {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            padding: 30px; /* Aumenta o padding interno do menu */
+            border: 1px solid #ccc;
+            z-index: 10; /* Para garantir que o menu apareça sobre outros elementos */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; /* Define a largura do menu */
+            max-width: 400px; /* Define a largura máxima do menu */
+        }
+
+        #menu-toggle {
+            font-size: 3.5rem; /* Aumenta o tamanho do ícone do hambúrguer */
+            padding: 65px; /* Aumenta o tamanho do botão */
+            line-height: 0; /* Remove espaço extra ao redor do ícone */
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            transform: translateY(-50%);
+            display: block; /* Mostra o botão do menu */
+        }
+
+        #menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #menu-toggle span::before {
+            content: '';
+            position: absolute;
+            width: 5px; /* Aumenta a largura do traço vertical */
+            height: 30px; /* Ajusta a altura do traço vertical */
+            background-color: #0f0e0e; /* Cor dos traços */
+            top: 50%;
+            left: 50%; /* Centraliza o traço na metade do botão */
+            transform: translate(-50%, -50%); /* Centraliza vertical e horizontalmente */
+            transition: all 0.2s;
+        }
+
+        #menu-toggle.open span::before {
+            transform: rotate(45deg);
+        }
+
+        #menu-toggle.open span::after {
+            transform: rotate(-45deg);
+        }
+
+        #menu a {
+            display: block;
+            margin-bottom: 20px; /* Aumenta o espaçamento entre os itens do menu */
+            color: #333333;
+            text-decoration: none;
+        }
+
+        #menu a:hover {
+            color: #000000;
+        }
+
+        /* Estilos adicionais para o overlay */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+
+        /* Background com imagem */
+        body {
+            background-color: #f3f4f6; /* Cor de fundo */
+            font-family: var(--font-family);
+        }
+
+        /* Estilos adicionais para dispositivos móveis */
+        @media (max-width: 768px) {
+            #menu {
+                width: 90%; /* Ajusta a largura do menu para dispositivos móveis */
+            }
+
+            #menu-toggle {
+                display: block; /* Mostra o botão de menu para dispositivos móveis */
+            }
+
+            .nome {
+                margin-right: 10px; /* Adiciona margem à direita */
+            }
+        }
+
+        /* Estilos adicionais para a div do menu com imagem de background */
+        .container {
+            position: relative;
+            display: flex; /* Display flex para alinhar os itens horizontalmente */
+            align-items: center; /* Alinha os itens verticalmente */
+            justify-content: center; /* Centraliza os itens horizontalmente */
+            height: 100vh; /* Define a altura como 100% da viewport */
+        }
+
+        #texto {
+            text-align: center; /* Centraliza o texto horizontalmente */
+            color: black;
+            font-size: 18px; /* Tamanho do texto */
+            width: 50%; /* Largura do texto */
+            border-left: 0px solid #ccc; /* Adiciona borda à esquerda */
+            padding-left: 0px; /* Adiciona espaço à esquerda do texto */
+            display: flex;
+            align-items: center; /* Centraliza verticalmente */
+            flex-direction: column; /* Altera a direção do flex para coluna */
+            margin-left:30px;
+        }
+
+        .nome {
+            font-size: x-large;
+            margin-bottom: 5px; /* Adiciona margem inferior */
+            
+        }
+
+        .oab {
+            font-size: 14px; /* Tamanho do número da OAB */
+            margin-top: 5px; /* Adiciona margem superior */
+        }
+
+        #banner {
+            text-align: center;
+            width: 50%; /* Largura da imagem */
+            border-right: 3px solid #ccc; /* Adiciona borda à direita */
+            padding-right: 10px; /* Adiciona espaço à direita da imagem */
+            margin-left: 30px;
+            padding-right: 90px;
+            
+            display: flex;
+            align-items: center; /* Centraliza verticalmente */
+        }
+
+        #banner img {
+            width: 100%;
+            max-width: 100%; /* Largura máxima do banner */
+            height: auto;
+            margin-left: 40px;
+        }
+
+        /* Estilos para o ícone de seta */
+        .arrow-icon {
+            position: absolute;
+            bottom: 20px; /* Distância do ícone ao fundo da página */
+            left: 50%;
+            transform: translateX(-50%);
+            animation: moveDown 0.5s infinite alternate; /* Animação para mover para baixo */
+        }
+
+        /* Estilo para a imagem do ícone de seta */
+        .arrow-icon img {
+            width: 50px; /* Largura da imagem */
+        }
+
+        /* Animação para mover para baixo */
+        @keyframes moveDown {
+            from {
+                transform: translate(-50%, 0);
+            }
+
+            to {
+                transform: translate(-50%, 10px);
+            }
+        }
+
+        /* Estilos para a section */
+        section {
+            width: 100%; /* Largura da section */
+            height: 200px; /* Altura da section */
+            margin: 0px auto; /* Margem para centralizar */
+            background: linear-gradient(to bottom, #cccccc, #999999); /* Fundo degradê cinza */
+            padding: 20px; /* Espaçamento interno */
+        }
+
+        h2 {
+            font-size: xx-large;
+            text-align: center;
+        }
+
+        .fale {
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
+
 <body class="bg-gray-200">
-  <div class="container mx-auto relative">
-    <!-- Menu Hambúrguer -->
-    <button id="menu-toggle" class="flex items-center border rounded text-gray-600 border-gray-600 hover:text-white hover:border-white">
-      <span></span> <!-- Adiciona um span para reconhecer o clique em toda a área do botão -->
-    </button>
-    
-    <!-- Banner -->
-    <div id="banner">
-      <img src="justice.png" alt="Banner">
-    </div>
-    
-    <!-- Texto -->
-    <div id="texto">
-      <p class="nome">Marcone Silva de Brito</p>
-      <p>OAB/MG nº 100100</p>
-    </div>
-    
-    <!-- Menu Dropdown -->
-    <div id="menu" class="text-right">
-      <a href="#">Home</a>
-      <a href="#">Sobre</a>
-      <a href="#">Contato</a>
-    </div>
+    <div class="container mx-auto relative">
+        <!-- Menu Hambúrguer -->
+        <button id="menu-toggle"
+            class="flex items-center border rounded text-gray-600 border-gray-600 hover:text-white hover:border-white">
+            <span></span> <!-- Adiciona um span para reconhecer o clique em toda a área do botão -->
+        </button>
 
-    <!-- Overlay -->
-    <div id="overlay"></div>
+        <!-- Banner -->
+        <div id="banner">
+            <img src="Símbolo da Justiça.png" alt="Banner">
+        </div>
 
-    <!-- Ícone de seta -->
-    <div class="arrow-icon">
-      <img src="seta-para-baixo.png" alt="Seta" class="w-10">
+        <!-- Texto -->
+        <div id="texto">
+            <p class="nome">Marcone Silva de Brito</p>
+            <p class="oab">OAB/MG nº 100100</p> <!-- Adiciona a classe "oab" para o número da OAB -->
+        </div>
+
+        <!-- Menu Dropdown -->
+        <div id="menu" class="text-right">
+            <a href="#">Home</a>
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+        </div>
+
+        <!-- Overlay -->
+        <div id="overlay"></div>
+
+        <!-- Ícone de seta -->
+        <div class="arrow-icon">
+            <img src="seta-para-baixo.png" alt="Seta" class="w-10">
+        </div>
     </div>
-  </div>
- <!-- Section para receber um texto -->
- <section>
-  <h2>"Defendemos seus direitos com ética e excelência."</h2>
-  <!-- Ícone do WhatsApp -->
-  <a href="https://api.whatsapp.com/send?phone=000000000000" target="_blank" rel="noopener noreferrer" class=" fale text-xl  block  py-2 rounded-md shadow-md hover:bg-yellow-200 transition duration-300 animate__animated animate__zoomInLeft text-center ">
-    Fale comigo agora
-    <i class="fab fa-whatsapp ml-2"></i>
-</a>
-</section>
-  <script src="menu.js"></script>
+    <!-- Section para receber um texto -->
+    <section>
+        <h2>"Defendemos seus direitos com ética e excelência."</h2>
+        <!-- Ícone do WhatsApp -->
+        <a href="https://api.whatsapp.com/send?phone=000000000000" target="_blank" rel="noopener noreferrer"
+            class=" fale text-xl  block  py-2 rounded-md shadow-md hover:bg-yellow-200 transition duration-300 animate__animated animate__zoomInLeft text-center ">
+            Fale comigo agora
+            <i class="fab fa-whatsapp ml-2"></i>
+        </a>
+    </section>
+    <script src="menu.js"></script>
 </body>
+
 </html>
