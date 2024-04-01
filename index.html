@@ -8,10 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Adicione o link para o CDN do FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
-
         /* Definindo variável para a fonte */
         :root {
             --font-family: Arial, sans-serif;
@@ -122,7 +124,7 @@
             }
 
             #banner img {
-                width: 130%; /* Ajuste para telas de tablet */
+                width: 100%; /* Ajuste para telas de tablet */
                 max-width: none; /* Remove a largura máxima */
                 height: auto;
                 margin-left: 0px;
@@ -137,24 +139,26 @@
             }
 
             .nome {
-                font-size: 1.5em; /* Reduz o tamanho da fonte para telas menores */
-                margin-left: 15px;
-                margin-right: 25px;
-                animation: none; /* Remova a animação para dispositivos móveis */
+                font-size: 1.2em; /* Reduz o tamanho da fonte */
+                text-overflow: ellipsis; /* Adiciona reticências ao texto */
+            }
+
+            .oab {
+                font-size: 14px; /* Tamanho do número da OAB */
             }
         }
 
         @media (max-width: 640px) { /* Ajustado para dispositivos móveis como celulares */
             #banner img {
-                width: 220%; /* Aumenta o tamanho da imagem em 80% */
+                width: 100%; /* Ajusta o tamanho da imagem */
                 max-width: none; /* Remove a largura máxima */
                 height: auto;
-                margin-left: -50px;
-                padding-right: 40px;
+                margin-left: 0;
+                padding-right: 0;
             }
 
             #banner {
-                padding-right: 80px; /* Adiciona espaço à direita da imagem */
+                padding-right: 0; /* Remove o espaço à direita da imagem */
             }
         }
 
@@ -169,6 +173,7 @@
 
         .nome {
             font-size: 2em;
+            margin-bottom: 5px; /* Adiciona margem inferior */
             margin-left: 15px;
             margin-right: 25px;
             /* Efeito de digitação */
@@ -184,12 +189,6 @@
             margin-top: 5px; /* Adiciona margem superior */
             margin-left: 20px;
             margin-right: 50px;
-            /* Efeito de digitação */
-            overflow: hidden; /* Esconde o conteúdo excedente */
-            white-space: nowrap; /* Impede quebrar a linha */
-            margin: 0 auto; /* Centraliza horizontalmente */
-            letter-spacing: .15em; /* Espaçamento entre letras */
-            animation: typing 3.5s steps(30, end) forwards; /* Animação de digitação */
         }
 
         /* Animação de digitação */
@@ -261,13 +260,13 @@
             font-size: .8em;
         }
 
-        .slogan {
-            text-align: center;
+        .slogan{
+          text-align: center;
         }
 
-        .animate__animated.animate__flip {
+        .animate__animated.animate__flip{
             --animate-duration: 2s;
-        }
+          }
     </style>
 </head>
 
@@ -289,7 +288,7 @@
             <p class="nome">Marcone Silva de Brito</p>
             <img src="OAB.png" alt="" class="w-32 p-4 text-center animate__animated animate__flip">
             <p class="oab ">OAB/MG nº 100100</p>
-            <!-- Adiciona a classe "oab" para o número da OAB -->
+             <!-- Adiciona a classe "oab" para o número da OAB -->
         </div>
 
         <!-- Menu Dropdown -->
@@ -320,7 +319,8 @@
             <i class="fab fa-whatsapp ml-2"></i>
         </a>
     </section>
-    <script src="menu.js"></script>
+    <script src="menu.js">
+    </script>
 </body>
 
 </html>
