@@ -8,10 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Adicione o link para o CDN do FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
         /* Definindo variável para a fonte */
@@ -103,7 +100,15 @@
         }
 
         /* Estilos adicionais para dispositivos móveis */
-        @media (max-width: 1024px) { /* Alterado para 1024px para incluir tablets */
+        @media (max-width: 1024px) {
+            .texto-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
             #menu-toggle {
                 font-size: 2.5rem; /* Reduz o tamanho do ícone do hambúrguer */
                 padding: 22px; /* Aumenta o padding do botão em 10% */
@@ -128,7 +133,6 @@
                 max-width: none; /* Remove a largura máxima */
                 height: auto;
                 margin-left: 0px;
-                
             }
 
             #texto {
@@ -141,6 +145,7 @@
             .nome {
                 font-size: 1.2em; /* Reduz o tamanho da fonte */
                 text-overflow: ellipsis; /* Adiciona reticências ao texto */
+                overflow: hidden; /* Impede que o texto ultrapasse o contêiner */
             }
 
             .oab {
@@ -159,6 +164,19 @@
 
             #banner {
                 padding-right: 0; /* Remove o espaço à direita da imagem */
+            }
+
+            #nome{
+                text-align: center;
+            }
+            .logo-OAB{
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .texto-container {
+                text-align: center; /* Centraliza todo o conteúdo horizontalmente */
             }
         }
 
@@ -284,17 +302,20 @@
         </div>
 
         <!-- Texto -->
-        <div id="texto" style="margin-top: 20px;"> <!-- Adiciona margem superior -->
-            <p class="nome">Marcone Silva de Brito</p>
-            <img src="OAB.png" alt="" class="w-28 p-4 text-center animate__animated animate__flip">
-            <p class="oab ">OAB/MG nº 100100</p>
-             <!-- Adiciona a classe "oab" para o número da OAB -->
-        </div>
+<div id="texto" style="margin-top: 20px;">
+    <!-- Adiciona uma classe de contêiner para facilitar o alinhamento -->
+    <div class="texto-container text-center">
+        <p class="nome">Marcone Silva de Brito</p>
+        <img src="OAB.png" alt="" class="logo-OAB w-28 p-4 text-center animate__animated animate__flip">
+    </div>
+    <p class="oab text-center">OAB/MG nº 100100</p>
+</div>
 
         <!-- Menu Dropdown -->
         <div id="menu" class="text-right p-4 hidden absolute right-0">
             <a href="#">Home</a>
             <a href="#">Sobre</a>
+            <a href="#">Serviços</a>
             <a href="#">Blog</a>
             <a href="#">Artigos</a>
             <a href="#">Contato</a>
