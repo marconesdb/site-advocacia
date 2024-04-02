@@ -4,343 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Container com Menu Hambúrguer</title>
+    <title>Main Section with Hamburger Menu Icon</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Adicione o link para o CDN do FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
-        /* Definindo variável para a fonte */
-        :root {
-            --font-family: Arial, sans-serif;
-        }
-
-        /* Estilos adicionais para o menu */
-        #menu {
-            display: none;
-            position: absolute;
-            padding: 30px; /* Aumenta o padding interno do menu */
-            border: 1px solid #ccc;
-            z-index: 10; /* Para garantir que o menu apareça sobre outros elementos */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%; /* Define a largura do menu */
-            max-width: 400px; /* Define a largura máxima do menu */
-            background-color: #ffffff; /* Cor de fundo do menu */
-        }
-
-        #menu-toggle {
-            font-size: 3.5rem; /* Aumenta o tamanho do ícone do hambúrguer */
-            padding: 65px; /* Aumenta o tamanho do botão */
-            line-height: 0; /* Remove espaço extra ao redor do ícone */
-            position: absolute;
-            top: 10%;
-            right: 5%;
-            transform: translateY(-50%);
-            display: block; /* Mostra o botão do menu */
-        }
-
-        #menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            position: relative;
-        }
-
-        #menu-toggle span::before {
-            content: '';
-            position: absolute;
-            width: 3px; /* Aumenta a largura do traço vertical */
-            height: 30px; /* Ajusta a altura do traço vertical */
-            background-color: #0f0e0e; /* Cor dos traços */
-            top: 50%;
-            left: 50%; /* Centraliza o traço na metade do botão */
-            transform: translate(-50%, -50%); /* Centraliza vertical e horizontalmente */
-            transition: all 0.2s;
-        }
-
-        #menu-toggle.open span::before {
-            transform: rotate(45deg);
-        }
-
-        #menu-toggle.open span::after {
-            transform: rotate(-45deg);
-        }
-
-        #menu a {
-            display: block;
-            margin-bottom: 20px; /* Aumenta o espaçamento entre os itens do menu */
-            color: #333333;
-            text-decoration: none;
-        }
-
-        #menu a:hover {
-            color: #000000;
-        }
-
-        /* Estilos adicionais para o overlay */
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 5;
-        }
-
-        /* Background com imagem */
-        body {
-            background-color: #f3f4f6; /* Cor de fundo */
-            font-family: var(--font-family);
-        }
-
-        /* Estilos adicionais para dispositivos móveis */
-        @media (max-width: 1024px) {
-            .texto-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-
-            #menu-toggle {
-                font-size: 2.5rem; /* Reduz o tamanho do ícone do hambúrguer */
-                padding: 22px; /* Aumenta o padding do botão em 10% */
-            }
-
-            #menu {
-                width: 90%; /* Ajusta a largura do menu para dispositivos móveis */
-            }
-
-            .container {
-                flex-direction: column; /* Altera a direção do flex para coluna */
-            }
-
-            #banner {
-                order: -1; /* Move o banner para o topo */
-                margin-bottom: 20px; /* Adiciona espaço entre o banner e o texto */
-                width: 100%; /* Define a largura da imagem como 100% */
-            }
-
-            #banner img {
-                width: 100%; /* Ajuste para telas de tablet */
-                max-width: none; /* Remove a largura máxima */
-                height: auto;
-                margin-left: 0px;
-            }
-
-            #texto {
-                text-align: center; /* Centraliza o texto horizontalmente */
-                margin-left: 0; /* Remove a margem esquerda */
-                margin-bottom: 20px; /* Adiciona espaçamento entre a imagem e o texto */
-                margin-top: 20px; /* Adiciona margem superior entre o texto e a imagem */
-            }
-
-            .nome {
-                font-size: 1.2em; /* Reduz o tamanho da fonte */
-                text-overflow: ellipsis; /* Adiciona reticências ao texto */
-                overflow: hidden; /* Impede que o texto ultrapasse o contêiner */
-            }
-
-            .oab {
-                font-size: 14px; /* Tamanho do número da OAB */
-            }
-        }
-
-        @media (max-width: 640px) { /* Ajustado para dispositivos móveis como celulares */
-            #banner img {
-                width: 100%; /* Ajusta o tamanho da imagem */
-                max-width: none; /* Remove a largura máxima */
-                height: auto;
-                margin-left: 0;
-                padding-right: 0;
-            }
-
-            #banner {
-                padding-right: 0; /* Remove o espaço à direita da imagem */
-            }
-
-            #nome{
-                text-align: center;
-            }
-            .logo-OAB{
-                text-align: center;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .texto-container {
-                text-align: center; /* Centraliza todo o conteúdo horizontalmente */
-            }
-        }
-
-        /* Estilos adicionais para a div do menu com imagem de background */
-        .container {
-            position: relative;
-            display: flex; /* Display flex para alinhar os itens horizontalmente */
-            align-items: center; /* Alinha os itens verticalmente */
-            justify-content: center; /* Centraliza os itens horizontalmente */
-            height: 100vh; /* Define a altura como 100% da viewport */
-        }
-
-        .nome {
-            font-size: 1.5em;
-            margin-bottom: 5px; /* Adiciona margem inferior */
-            margin-left: 15px;
-            margin-right: 25px;
-            /* Efeito de digitação */
-            overflow: hidden; /* Esconde o conteúdo excedente */
-            white-space: nowrap; /* Impede quebrar a linha */
-            margin: 0 auto; /* Centraliza horizontalmente */
-            letter-spacing: .15em; /* Espaçamento entre letras */
-            animation: typing 3.5s steps(30, end) forwards; /* Animação de digitação */
-        }
-
-        .oab {
-            font-size: 14px; /* Tamanho do número da OAB */
-            margin-top: 5px; /* Adiciona margem superior */
-            margin-left: 20px;
-            margin-right: 50px;
-        }
-
-        /* Animação de digitação */
-        @keyframes typing {
-            from {
-                width: 0;
-                margin-left: 15px; /* Adiciona margem esquerda */
-            }
-
-            to {
-                width: 100%;
-                margin-left: 15px; /* Adiciona margem esquerda */
-            }
-        }
-
-        #banner {
-            text-align: center;
-            width: 50%; /* Largura da imagem */
-            border-right: 3px solid #ccc; /* Adiciona borda à direita */
-            padding-right: 10px; /* Adiciona espaço à direita da imagem */
-            margin-left: 0px;
-            padding-right: 120px;
-            display: flex;
-            align-items: center; /* Centraliza verticalmente */
-        }
-
-        /* Estilos para o ícone de seta */
-        .arrow-icon {
-            position: absolute;
-            bottom: 100px; /* Distância do ícone ao fundo da página */
-            left: 50%;
-            transform: translateX(-50%);
-            animation: moveDown 0.5s infinite alternate; /* Animação para mover para baixo */
-        }
-
-        /* Estilo para a imagem do ícone de seta */
-        .arrow-icon img {
-            width: 40px; /* Largura da imagem */
-        }
-
-        /* Animação para mover para baixo */
-        @keyframes moveDown {
-            from {
-                transform: translate(-50%, 0);
-            }
-
-            to {
-                transform: translate(-50%, 10px);
-            }
-        }
-
-        /* Estilos para a section */
-        section {
-            width: 100%; /* Largura da section */
-            height: 200px; /* Altura da section */
-            margin: 0px auto; /* Margem para centralizar */
-            background: linear-gradient(to bottom, #cccccc, #999999); /* Fundo degradê cinza */
-            padding: 20px; /* Espaçamento interno */
-        }
-
-        h2 {
-            font-size: xx-large;
-            text-align: center;
-        }
-
-        .fale {
-            width: 300px;
-            margin: 0 auto;
-            font-size: .8em;
-        }
-
-        .slogan{
-          text-align: center;
-        }
-
-        .animate__animated.animate__flip{
-            --animate-duration: 2s;
-          }
-    </style>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
 <body class="bg-gray-200">
-    <div class="container mx-auto relative">
-        <!-- Menu Hambúrguer -->
+    <!-- Main Section -->
+    <section class="flex flex-col items-center justify-center h-screen bg-white relative">
+        <!-- Hamburger Menu Icon -->
         <button id="menu-toggle"
-            class="flex items-center border rounded text-gray-600 border-gray-600 hover:text-white hover:border-white">
-            <span></span> <!-- Adiciona um span para reconhecer o clique em toda a área do botão -->
-        </button>
+        class="absolute top-20 right-20 p-4 text-yellow-500 hover:text-white focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-14" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M2 9h16v2H2V9zm0-4h16v2H2V5zm0 8h16v2H2v-2z"/>
+        </svg>
+    </button>
+    
 
-        <!-- Banner -->
-        <div id="banner" style="margin-bottom: 20px;"> <!-- Adiciona margem inferior -->
-            <img src="Símbolo da Justiça (1).png" alt="Banner">
-        </div>
-
-        <!-- Texto -->
-<div id="texto" style="margin-top: 20px;">
-    <!-- Adiciona uma classe de contêiner para facilitar o alinhamento -->
-    <div class="texto-container text-center">
-        <p class="nome">Marcone Silva de Brito</p>
-        <img src="OAB.png" alt="" class="logo-OAB w-28 p-4 text-center animate__animated animate__flip">
-    </div>
-    <p class="oab text-center">OAB/MG nº 100100</p>
-</div>
-
-        <!-- Menu Dropdown -->
-        <div id="menu" class="text-right p-4 hidden absolute right-0">
-            <a href="#">Home</a>
-            <a href="#">Sobre</a>
-            <a href="#">Serviços</a>
-            <a href="#">Blog</a>
-            <a href="#">Artigos</a>
-            <a href="#">Contato</a>
-            <a href="#">FAC</a>
-        </div>
 
         <!-- Overlay -->
-        <div id="overlay"></div>
+        <div id="overlay" class="hidden fixed inset-0 bg-black opacity-50"></div>
 
-        <!-- Ícone de seta -->
-        <div class="arrow-icon">
-            <img src="seta-para-baixo.png" alt="Seta" class="w-10">
+        <!-- Menu Content -->
+        <div id="menu"
+            class="hidden absolute top-16 right-0 w-40 bg-white shadow-md rounded-md">
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-200">Home</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-200">Sobre</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-200">Serviços</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-200">Blog</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-200">Artigos</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-200">Contato</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-200">FAC</a>
         </div>
-    </div>
-    <!-- Section para receber um texto -->
-    <section>
-        <p class="slogan mt-8 mb-4">"Defendemos seus direitos com ética e excelência."</p>
-        <!-- Ícone do WhatsApp -->
-        <a href="https://api.whatsapp.com/send?phone=000000000000" target="_blank" rel="noopener noreferrer"
-            class=" fale text-xl  block py-2 rounded-md shadow-md hover:bg-yellow-200 transition duration-300 animate__animated animate__zoomInLeft text-center ">
-            Fale comigo agora
-            <i class="fab fa-whatsapp ml-2"></i>
-        </a>
+
+        <!-- Content -->
+        <div class="text-center mb-36">
+            <img src="Símbolo da Justiça (1).png" alt="" class="mb-32 mt-36 animate__animated animate__backInDown" style="width: 450px;">
+            <h1 class="text-4xl">Marcone Silva de Brito</h1>
+            <img src="OAB.png" alt="" style="width: 100px;" class="mx-auto mt-16 animate__animated  animate__flip">
+            <p>OAB/MG:100100</p>
+        </div>
     </section>
-    <script src="menu.js">
+
+    <script>
+        // JavaScript para controlar o menu hambúrguer
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            overlay.classList.toggle('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            overlay.classList.add('hidden');
+        });
     </script>
 </body>
 
